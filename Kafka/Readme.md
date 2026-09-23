@@ -41,39 +41,6 @@ docker compose logs -f kafka
 ## docker-compose.yml
 
 ```yaml
-services:
-  postgres:
-    image: pgvector/pgvector:pg16
-    container_name: webvector-postgres
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: webvector
-      POSTGRES_PASSWORD: webvector
-      POSTGRES_DB: webvector
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U webvector -d webvector"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-
-  redis:
-    image: redis:7-alpine
-    container_name: webvector-redis
-    restart: unless-stopped
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-    command: redis-server --appendonly yes
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 5s
-      timeout: 3s
-      retries: 10
 
   kafka:
     image: apache/kafka:3.7.0
@@ -103,8 +70,6 @@ services:
       start_period: 30s
 
 volumes:
-  postgres_data:
-  redis_data:
   kafka_data:
 ```
 
