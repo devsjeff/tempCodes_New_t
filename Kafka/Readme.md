@@ -5,11 +5,9 @@ Dev environment for a first Kafka project. Single EC2 friendly.
 
 ---
 
-## Stack
+## 
 - **Kafka**: `apache/kafka:3.7.0` (KRaft mode, no ZooKeeper)
-- **Postgres**: `pgvector/pgvector:pg16`
-- **Redis**: `redis:7-alpine`
-- All via `docker compose`
+- via `docker compose`
 
 ---
 
